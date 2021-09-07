@@ -11,7 +11,9 @@ class TicketControl extends React.Component {
   }
 
   handleClick = () => {
-    this.setState({ formVisibleOnPage: true });
+    this.setState((prevState) => ({
+      formVisibleOnPage: !prevState.formVisibleOnPage,
+    }));
   };
 
   render() {
