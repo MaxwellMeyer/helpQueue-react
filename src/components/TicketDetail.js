@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function TicketDetail(props) {
-  const { ticket } = props;
+  const { ticket, onClickingDelete } = props;
 
   return (
     <React.Fragment>
@@ -13,6 +13,7 @@ function TicketDetail(props) {
       <p>
         <em>{ticket.issue}</em>
       </p>
+      <button onClick={() => onClickingDelete(ticket.id)}>Close Ticket</button>
       <hr />
     </React.Fragment>
   );
@@ -20,6 +21,7 @@ function TicketDetail(props) {
 
 TicketDetail.propTypes = {
   ticket: PropTypes.object,
+  onClickingDelete: PropTypes.func,
 };
 
 export default TicketDetail;
