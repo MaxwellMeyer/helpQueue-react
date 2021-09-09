@@ -42,9 +42,7 @@ class TicketControl extends React.Component {
         <TicketDetail ticket={this.state.selectedTicket} />
       );
       buttonText = "Return to Ticket List";
-      // While our TicketDetail component only takes placeholder data, we will eventually be passing the value of selectedTicket as a prop.
     } else if (this.state.formVisibleOnPage) {
-      // This conditional needs to be updated to "else if."
       currentlyVisibleState = (
         <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
       );
@@ -56,7 +54,7 @@ class TicketControl extends React.Component {
           onTicketSelection={this.handleChangingSelectedTicket}
         />
       );
-      // Because a user will actually be clicking on the ticket in the Ticket component, we will need to pass our new handleChangingSelectedTicket method as a prop.
+
       buttonText = "Add Ticket";
     }
     return (
