@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import NewTicketForm from "./NewTicketForm";
 import TicketList from "./TicketList";
@@ -7,8 +8,17 @@ class TicketControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
+      masterTicketList: [],
+      selectedTicket: null,
     };
   }
+  handleAddingNewTicketToList = (newTicket) => {
+    const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
+    this.setState({
+      masterTicketList: newMasterTicketList,
+      formVisibleOnPage: false,
+    });
+  };
 
   handleClick = () => {
     this.setState((prevState) => ({
@@ -20,10 +30,12 @@ class TicketControl extends React.Component {
     let currentlyVisibleState = null;
     let buttonText = null;
     if (this.state.formVisibleOnPage) {
-      currentlyVisibleState = <NewTicketForm />;
+      currentlyVisibleState = (
+        <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList} />
+      );
       buttonText = "Return to Ticket List";
     } else {
-      currentlyVisibleState = <TicketList />;
+      <TicketList ticketList={this.state.masterTicketList} />;
       buttonText = "Add Ticket";
     }
     return (
