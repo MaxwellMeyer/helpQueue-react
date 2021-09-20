@@ -32,25 +32,6 @@ describe("ticketListReducer", () => {
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
 
-  test("Should successfully add new ticket data to masterTicketList", () => {
-    const { names, location, issue, id } = ticketData;
-    action = {
-      type: c.ADD_TICKET,
-      names: names,
-      location: location,
-      issue: issue,
-      id: id,
-    };
-    expect(ticketListReducer({}, action)).toEqual({
-      [id]: {
-        names: names,
-        location: location,
-        issue: issue,
-        id: id,
-      },
-    });
-  });
-
   test("Should successfully delete a ticket", () => {
     action = {
       type: c.DELETE_TICKET,
