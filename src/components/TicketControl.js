@@ -24,7 +24,6 @@ class TicketControl extends React.Component {
       60000
     );
   }
-  // won't be using this method for our help queue update - but it's important to see how it works.
 
   componentWillUnmount() {
     console.log("component unmounted!");
