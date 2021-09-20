@@ -5,7 +5,7 @@ function TicketDetail(props) {
   const { ticket, onClickingDelete } = props;
 
   return (
-    <React.Fragment>
+    <>
       <h1>Ticket Detail</h1>
       <h3>
         {ticket.location} - {ticket.names}
@@ -16,7 +16,7 @@ function TicketDetail(props) {
       <button onClick={props.onClickingEdit}>Edit Ticket</button>
       <button onClick={() => onClickingDelete(ticket.id)}>Delete Ticket</button>
       <hr />
-    </React.Fragment>
+    </>
   );
 }
 

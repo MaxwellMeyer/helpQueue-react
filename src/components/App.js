@@ -4,10 +4,10 @@ import TicketControl from "./TicketControl";
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <Header />
       <TicketControl />
-    </React.Fragment>
+    </>
   );
 }
 

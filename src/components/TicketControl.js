@@ -17,6 +17,29 @@ class TicketControl extends React.Component {
       editing: false,
     };
   }
+
+  componentDidMount() {
+    this.waitTimeUpdateTimer = setInterval(
+      () => this.updateTicketElapsedWaitTime(),
+      60000
+    );
+  }
+  // won't be using this method for our help queue update - but it's important to see how it works.
+
+  componentWillUnmount() {
+    console.log("component unmounted!");
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
+  updateTicketElapsedWaitTime = () => {
+    const { dispatch } = this.props;
+    Object.values(this.props.masterTicketList).forEach((ticket) => {
+      const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
+      const action = a.updateTime(ticket.id, newFormattedWaitTime);
+      dispatch(action);
+    });
+  };
+
   handleAddingNewTicketToList = (newTicket) => {
     const { dispatch } = this.props;
     const action = a.addTicket(newTicket);
@@ -101,10 +124,10 @@ class TicketControl extends React.Component {
       buttonText = "Add Ticket";
     }
     return (
-      <React.Fragment>
+      <>
         {currentlyVisibleState}
         <button onClick={this.handleClick}>{buttonText}</button>
-      </React.Fragment>
+      </>
     );
   }
 }

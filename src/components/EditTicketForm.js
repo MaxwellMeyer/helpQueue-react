@@ -12,16 +12,18 @@ function EditTicketForm(props) {
       location: event.target.location.value,
       issue: event.target.issue.value,
       id: ticket.id,
+      timeOpen: ticket.timeOpen,
+      formattedWaitTime: ticket.formattedWaitTime,
     });
   }
 
   return (
-    <React.Fragment>
+    <>
       <ReusableForm
         formSubmissionHandler={handleEditTicketFormSubmission}
         buttonText="Update Ticket"
       />
-    </React.Fragment>
+    </>
   );
 }
 
